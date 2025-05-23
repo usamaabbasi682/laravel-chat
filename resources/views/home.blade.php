@@ -1,4 +1,5 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app') 
+@section('content')
 <div class="container py-4">
     <div class="row shadow rounded overflow-hidden chat-container">
         <!-- Sidebar - Contacts List -->
@@ -17,12 +18,12 @@
                 </div>
             </div>
             <div class="list-group list-group-flush contacts-list">
-                <!-- Active Chat -->
+                @foreach ($chatUsers as $user)
                 <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between active">
                     <div class="d-flex align-items-center">
                         <img src="https://randomuser.me/api/portraits/men/10.jpg" class="rounded-circle me-3" width="48" height="48" alt="John Doe" />
                         <div>
-                            <h6 class="mb-0">John Doe</h6>
+                            <h6 class="mb-0">{{ $user->name ?? '' }}</h6>
                             <p class="mb-0 text-truncate small" style="max-width: 150px;">Hi this is my testing message</p>
                         </div>
                     </div>
@@ -31,48 +32,24 @@
                         <span class="badge bg-white text-primary rounded-pill mt-1">2</span>
                     </div>
                 </a>
-
-                <!-- Other Contacts -->
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                @endforeach
+            </div>
+            <div class="list-group list-group-flush contacts-list">
+                @foreach ($users as $user)
+                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between active">
                     <div class="d-flex align-items-center">
-                        <img src="https://randomuser.me/api/portraits/women/11.jpg" class="rounded-circle me-3" width="48" height="48" alt="Jane Smith" />
+                        <img src="https://randomuser.me/api/portraits/men/10.jpg" class="rounded-circle me-3" width="48" height="48" alt="John Doe" />
                         <div>
-                            <h6 class="mb-0">Jane Smith</h6>
-                            <p class="mb-0 text-truncate small" style="max-width: 150px;">This is testing</p>
+                            <h6 class="mb-0">{{ $user->name ?? '' }}</h6>
+                            <p class="mb-0 text-truncate small" style="max-width: 150px;">Hi this is my testing message</p>
                         </div>
                     </div>
                     <div class="d-flex flex-column align-items-end">
-                        <small class="text-muted">3:15 PM</small>
-                        <span class="badge bg-danger rounded-pill mt-1">5</span>
+                        <small class="text-white-50">2:30 PM</small>
+                        <span class="badge bg-white text-primary rounded-pill mt-1">2</span>
                     </div>
                 </a>
-
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                        <img src="https://randomuser.me/api/portraits/men/12.jpg" class="rounded-circle me-3" width="48" height="48" alt="Mike Johnson" />
-                        <div>
-                            <h6 class="mb-0">Mike Johnson</h6>
-                            <p class="mb-0 text-truncate small" style="max-width: 150px;">Hi ?</p>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-column align-items-end">
-                        <small class="text-muted">4:00 PM</small>
-                    </div>
-                </a>
-
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                        <img src="https://randomuser.me/api/portraits/women/13.jpg" class="rounded-circle me-3" width="48" height="48" alt="Alice Brown" />
-                        <div>
-                            <h6 class="mb-0">Alice Brown</h6>
-                            <p class="mb-0 text-truncate small" style="max-width: 150px;">Ok I am in.</p>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-column align-items-end">
-                        <small class="text-muted">5:45 PM</small>
-                        <span class="badge bg-danger rounded-pill mt-1">3</span>
-                    </div>
-                </a>
+                @endforeach
             </div>
         </div>
 
